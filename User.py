@@ -1,9 +1,8 @@
 from Wallet import Wallet
 from IdentificationMethod import IdentificationMethod
+from abc import ABC, abstractmethod 
 
 class User:
-    # to do 
-    # only password is passed , Hash is calculated later based on hashing method
     def __init__(self, username, hashed_password, identification_method, identifying_document):
         self.username = username
         self.hashed_password = hashed_password
@@ -12,5 +11,18 @@ class User:
         self.identifying_document = identifying_document
         self.past_trips = []
 
-    # Methods for getting information and updating
-    # ...
+    def get_username(self):
+        return self.username
+    
+    def get_hashed_password(self):
+        return self.hashed_password
+    
+    def update_past_trips(self,trip):
+        self.past_trips.append(trip)
+
+    def get_past_trips(self):
+        return self.past_trips
+    
+    @abstractmethod
+    def pay_overdue(self):
+        pass

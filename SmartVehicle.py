@@ -19,6 +19,7 @@ class SmartVehicle:
         self.docking_location = docking_location
         self.vehicle_condition = vehicle_condition
         self.qr_code = qr_code
+        self.distance_travelled_in_km = 0.0
 
     def get_vehicle_number(self):
         return self.vehicle_number
@@ -48,5 +49,4 @@ class SmartVehicle:
         self.qr_code = updated_qr_code
 
     def get_distance_travelled_in_km(self):
-        # Placeholder for implementation
-        pass
+        return self.distance_travelled_in_km 

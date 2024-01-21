@@ -1,9 +1,13 @@
 class PricingStrategy:
-    def __init__(self, base_price, per_km_price, fine_per_day):
+    def __init__(self, base_distance , base_price, per_km_price, fine_per_day):
+        self.base_distance = base_distance
         self.base_price = base_price
         self.per_km_price = per_km_price
         self.fine_per_day = fine_per_day
 
+    def get_base_distance(self):
+        return self.base_distance
+    
     def get_base_price(self):
         return self.base_price
 

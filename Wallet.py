@@ -20,6 +20,10 @@ class Wallet:
 
     def get_current_balance(self):
         return self.current_balance
-
+    
     def get_transaction_history(self):
         return self.transaction_history
+    
+    def can_pay_amount(self, amount):
+        return amount > 0 and amount + self.min_balance <= self.current_balance
+        
