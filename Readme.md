@@ -8,7 +8,7 @@ To run the unit tests for the Smart Vehicle Booking System, follow these steps:
 ```bash
 python3 -m unittest
 
-## Assumptions
+### Assumptions
 
 1. **Naming Convention:** The project follows the underscore (_) naming convention for variable and method names,
 as opposed to the camel case convention depicted in the UML diagram. Camel case convention is used in class names as depicted
