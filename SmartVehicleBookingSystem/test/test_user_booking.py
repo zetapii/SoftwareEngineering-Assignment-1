@@ -69,7 +69,7 @@ class TestUserBooking(unittest.TestCase):
         self.assertFalse(trip.is_trip_finished())
         self.assertFalse(trip.is_bill_settled())
 
-        # Renew the trip after 8 hours
+        # Renew the trip after 9 hours
         renew_time = start_time + timedelta(hours=9)
         trip.renew(renew_time)
 
