@@ -1,0 +1,267 @@
+@startuml Smart-Vehicle
+
+class Location
+{
+	- latitude  : float
+	- longitude : float
+	+ getLatitude() : float
+	+ getLongitude() : float
+}
+
+
+class SmartVehicle
+{
+	- vehicleNumber : int
+	- registrationNumber : String
+	- vehicleType : VehicleType
+	- dockingLocation : Location
+	- liveLocation : Location
+	- vehicleCondition : VehicleCondition
+	- qrCode : String
+
+	+ getVehicleNumber() : int
+	+ getRegistrationNumber() : String
+	+ getVehicleType() : VehicleType
+	+ getDockingLocation() : Location
+	+ getLiveLocation(): Location
+	+ getVehicleCondition() : VehicleCondition
+	+ getqrCode() : String
+
+	+ updateDockingLocation(newLocation : Location) : void
+	+ updateVehicleCondition(updatedCondition : VehicleCondition ) : void
+	+ updateqrCode(updatedqrCode : String) : void
+	+ getDistanceTravelledInKm() : float
+}
+
+class LoggingService
+{
+	- events : String[]
+	+ logEvent(event : String) : void
+	+ getLog() : String[]
+	+ clearAllEvents(): void
+	+ getSystemAnalysis(): String
+}
+
+class ParkingLotManagement
+{
+	- vehicleList : SmartVehicle[]
+	- vehiclesAssignedToRide : SmartVehicle[]
+	- vehicleToRepair : SmartVehicle[]
+	- parkingLotLog: LoggingService
+
+
+	+ addVehicle(vehicleToAdd : SmartVehicle ) : void
+	+ removeVehicle(vehicleToRemove : SmartVehicle) : void
+	+ assignRide(vehicleToAssign : SmartVehicle) : void
+	+ dockCompletedRideVehicle(vehicle : SmartVehicle) : void
+	+ isReadyToRide(vehicle : SmartVehicle) : bool
+	+ getAllVehicleForRepair() : SmartVehicle[]
+	+ getVehicleInformation(qrCode : String) : SmartVehicle
+}
+
+class Wallet
+{
+	- currentBalance : float
+	- transactionHistory : String[]
+	- minBalance : float
+	+ addFunds(amount: float) : void
+	+ deductFund(amount: float) : bool
+	+ getCurrentBalance() : float
+	+ getTransactionHistory() : String[]
+	+ getMinBalance() : float
+	+ setMinBalance(amount:float) : void
+}
+
+enum IdentificationMethod
+{
+	StudentId
+	EmployeeId
+	AadharCard
+	PANCard
+}
+
+enum VehicleCondition
+{
+	ReadyToUse
+	NeedRepair
+	NeedReplacement
+}
+
+enum VehicleType
+{
+	Bike
+	Bicycle
+	Moped
+}
+
+
+enum ExternalPaymentOptions
+{
+	UPI
+	NetBanking
+	CreditCard
+}
+
+enum HashingAlgorithm
+{
+	MD5
+	SH5
+	Bcrypt
+}
+class AuthenticationSystem
+{
+
+	- userList : User[]
+	- hashingAlgorithm : HashingAlgorithm
+
+	+ loginUser(username : String , password: String) : User
+	+ registerUser(username : String , password: String , identificationMethod : IdentificationMethod,
+	identifyingDocument : file) : User
+	+ getHashingAlgorithm() : HashingAlgorithm
+	+ setHashingAlgorithm(newAlgorithm: HashingAlgorithm) : void
+}
+
+class User
+{
+	- username : String
+	- hashedPassword : String
+	- wallet : Wallet
+	- identificationMethod : IdentificationMethod
+	- identifiyingDocument : File
+	- pastTrips : Trip[]
+	- college_id_number : int
+
+	+ getUsername() : String
+	+ getWallet() : Wallet
+	+ setWallet(wallet : Wallet) : void
+	+ setIdentificationMethod(idMethodToSet :IdentificationMethods) : void
+	+ uploadIdentifyingDocument(docToUpload : File) : void
+	+ updatePassword(oldPassword: String,newPassword: String) : void
+	+ getTrips() : Trip[]
+	+ addToTrip(toAdd : Trip) : void
+	+ get_id_number(): int
+	+ set_id_number(): int
+}
+
+class Employee
+{
+	- amountDeductedFromSalary : float
+	+ deductFromSalary(amount : float) : void
+}
+
+class Student
+{
+	- amountAddedToFees : float
+	+ addToFees(amount : float) : void
+}
+
+class UserPaymentManagement
+{
+	- user: User
+	- autoDeduct : bool
+	+ getUser(): User
+	+ isAutoDeduct() : bool
+	+ payForTrip(trip : Trip ) : bool
+	+ addMoneyExternally(type : ExternalPaymentOptions, amountToAdd : float) : void
+}
+
+' class StudentPaymentManagement
+' {
+	'    - student : Student
+	'    - autoDeduct : bool
+	'    - amountAddedToFees : float
+	'    + getStudent() : Student
+	'    + addToFees(amount : float) : void
+	'
+' }
+
+' class EmployeePaymentManagement
+' {
+	'    - employee : Employee
+	'    - autoDeduct : bool
+	'    - amountDeductedFromSalary : float
+	'    + getEmployee() : Employee
+	'    + deductFromSalary(amount : float) : void
+	'
+' }
+
+class Trip
+{
+	- vehicleUsed : SmartVehicle
+	- userRiding : User
+	- lastRenewTime : Date
+	- isBillSettled : boolean
+	- isTripFinished : boolean
+	- distanceTravelledinKm : float
+	- pricingStrategy : PricingStrategy
+	- totalFine : float
+
+	+ Trip(vehicle : SmartVehicle, user : User,pricingStrategy : PricingStrategy)
+	+ startTrip(vehicle : SmartVehicle, user : User, startingTime : Date) : bool
+	+ updateDistanceTravelledinKm(updatedDistance : float) : void
+	+ calculateTotalBill() : float
+	+ void Renew(renewTime : Date) : void
+	+ finishTrip(userPaymentManagement : UserPaymentManagement) : void
+}
+
+class PricingStrategy
+{
+	- basePrice  : float
+	- perKmPrice : float
+	- finePerDay : float
+
+	+ getBasePrice() : float
+	+ getperKmPrice() : float
+	+ finePerDay() : float
+	+ setBasePrice(updatedPrice : float) : void
+	+ setperKmPrice(updatedPrice : float) : void
+	+ setPerDay(updatedPrice : float) : void
+}
+
+class CustomerSupport
+{
+	- ratings: Array < pair < Ride, int> >
+	- feedback: Array < pair < Ride, String> >
+	- supportDocumentation: String
+	+ giveRating(rating: int,ride : Ride)  : void
+	+ giveFeedback(feedback: String, ride : Ride) : void
+	+ geSupportDocumentation() : String
+}
+
+class ExternalPaymentManager
+{
+	' - username : String
+	' - password : String
+	' - mobileNumber : int
+	+ dispatchToWallet(userName : String , password : String , amountToDispatch :
+	float,paymentMethod : ExternalPaymentOptions, wallet : Wallet) : void
+
+}
+
+
+
+SmartVehicle o-- Location : 1..1
+User <|-- Employee : Is-a
+User <|-- Student : Is-a
+' UserPaymentManagement <|.. EmployeePaymentManagement : Implements
+' UserPaymentManagement <|.. StudentPaymentManagement : Implements
+ParkingLotManagement o--  SmartVehicle : Aggregation
+ParkingLotManagement o--  LoggingService : Aggregation
+
+User *-- Wallet : Composition
+Trip o-- PricingStrategy : Aggregation
+UserPaymentManagement *-- User :  Aggregation
+' UserPaymentManagement *-- User : Composition
+VehicleCondition <|-- SmartVehicle : Has
+VehicleType <|-- SmartVehicle : Has
+User --|> IdentificationMethod : Has
+Trip o-- SmartVehicle  : Aggregation
+Trip o-- User : Aggregation
+Trip --o CustomerSupport : Aggregation
+UserPaymentManagement --|> ExternalPaymentOptions : Uses
+AuthenticationSystem o-- User: Aggregation
+HashingAlgorithm <|-- AuthenticationSystem : Has
+Wallet *-- ExternalPaymentManager: Aggregation
+
+' User -- SmartVehicle : Association ( Rides )
+@enduml
