@@ -30,7 +30,7 @@
 
 ## UML Class Diagram
 
-![Class Diagram](out/class_diagram/Smart-Vehicle.png)
+![Class Diagram](out/class_diagram/UMLClassDiagram.png)
 
 ## How to test
 
