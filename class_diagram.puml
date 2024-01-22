@@ -123,7 +123,7 @@ class AuthenticationSystem
    '  + setHashingAlgorithm(newAlgorithm: HashingAlgorithm) : void
 }
 
-class User
+abstract class User
 {
    - username : String
    - hashedPassword : String
