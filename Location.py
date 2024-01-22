@@ -8,3 +8,4 @@ class Location:
 
     def get_longitude(self):
         return self.__longitude
+    
