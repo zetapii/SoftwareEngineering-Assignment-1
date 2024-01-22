@@ -10,6 +10,8 @@ python3 -m unittest
 
 ## Assumptions
 
-1. **Naming Convention:** The project follows the underscore (_) naming convention for variable and method names, as opposed to the camel case convention depicted in the UML diagram. This decision was made for consistency within the codebase.
+1. **Naming Convention:** The project follows the underscore (_) naming convention for variable and method names,
+ as opposed to the camel case convention depicted in the UML diagram.
+This decision was made for consistency within the codebase.
 
 Please adhere to the underscore naming convention when working on the project.
