@@ -6,7 +6,7 @@ from hashlib import md5, sha512
 class HashingAlgorithm(Enum):
     MD5 = 1
     SH5 = 2
-
+    
 class AuthenticationSystem:
     def __init__(self, hashing_algorithm):
         self.__user_list = []
