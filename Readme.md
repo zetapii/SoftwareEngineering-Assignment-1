@@ -28,6 +28,10 @@
 	├── VehicleCondition.py
 	└── Wallet.py
 
+## UML Class Diagram
+
+![Class Diagram](out/class_diagram/Smart-Vehicle.png)
+
 ## How to test
 
 To run the unit tests for the Smart Vehicle Booking System, follow these steps:
