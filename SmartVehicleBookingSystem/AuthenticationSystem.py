@@ -34,6 +34,9 @@ class AuthenticationSystem:
                     f"Unsupported hashing algorithm: {self.__hashing_algorithm}"
                 )
 
+    def get_hashing_algorithm(self):
+        return self.__hashing_algorithm
+    
     def login_user(self, username, password):
         '''
         This method returns the user object if the username and password matches, else it returns None.
@@ -56,3 +59,4 @@ class AuthenticationSystem:
                     identifying_document)
         self.__user_list.append(user)
         return user
+

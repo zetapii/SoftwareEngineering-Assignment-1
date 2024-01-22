@@ -110,6 +110,7 @@ enum HashingAlgorithm
     MD5
     SH5
 }
+
 class AuthenticationSystem
 { 
     - userList : User[]
@@ -118,12 +119,11 @@ class AuthenticationSystem
     + loginUser(username : String , password: String) : User
     + registerUser(username : String , password: String , identificationMethod : IdentificationMethod,
       identifyingDocument : file) : User
-    + getHash() : 
-   '  + getHashingAlgorithm() : HashingAlgorithm
-   '  + setHashingAlgorithm(newAlgorithm: HashingAlgorithm) : void
+    + getHash(str : String) : String 
+    + getHashingAlgorithm() : HashingAlgorithm
 }
 
-class User
+abstract class User
 {
    - username : String
    - hashedPassword : String
@@ -240,11 +240,11 @@ class PricingStrategy
 
 class CustomerSupport
 {
-  - ratings: Array < pair < Ride, int> >              
-  - feedback: Array < pair < Ride, String> >
+  - ratings: Array < pair < Trip, int> >              
+  - feedback: Array < pair < Trip, String> >
   - supportDocumentation: String  
-  + giveRating(rating: int,ride : Ride)  : void 
-  + giveFeedback(feedback: String, ride : Ride) : void
+  + giveRating(rating: int,trip : Trip)  : void 
+  + giveFeedback(feedback: String, trip : Trip) : void
   + getSupportDocumentation() : String
   + getAverageRating(): float
 }
@@ -282,7 +282,7 @@ Trip --o CustomerSupport : Aggregation
 UserPaymentManagement --|> ExternalPaymentOptions : Uses
 AuthenticationSystem o-- User: Aggregation
 HashingAlgorithm <|-- AuthenticationSystem : Has
-Wallet *-- ExternalPaymentManager: Aggregation
+Wallet --|> ExternalPaymentManager: Uses
 
 ' User -- SmartVehicle : Association ( Rides )
 @enduml
