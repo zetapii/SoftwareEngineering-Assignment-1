@@ -279,7 +279,7 @@ User --|> IdentificationMethod : Has
 Trip o-- SmartVehicle  : Aggregation
 Trip o-- User : Aggregation
 Trip --o CustomerSupport : Aggregation
-UserPaymentManagement --|> ExternalPaymentOptions : Uses
+ExternalPaymentManager --|> ExternalPaymentOptions : Uses
 AuthenticationSystem o-- User: Aggregation
 HashingAlgorithm <|-- AuthenticationSystem : Has
 Wallet --|> ExternalPaymentManager: Uses
