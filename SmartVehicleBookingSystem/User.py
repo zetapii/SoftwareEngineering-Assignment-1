@@ -29,6 +29,9 @@ class User:
 
     def get_wallet(self):
         return self.__wallet
+    
+    def set_wallet_min_balance(self,amount):
+        self.__wallet.set_min_balance(amount)
 
     def get_identification_method(self):
         return self.__identification_method

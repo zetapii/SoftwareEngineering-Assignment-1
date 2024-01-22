@@ -39,6 +39,9 @@ class Wallet:
     def get_transaction_history(self):
         return self.__transaction_history
 
+    def set_min_balance(self, amount):
+        self.__min_balance = amount
+
     def can_pay_amount(self, amount):
         '''
         Returns True if the wallet can pay the amount, else False.
