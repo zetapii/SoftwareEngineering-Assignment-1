@@ -1,28 +1,41 @@
 from Wallet import Wallet
 from IdentificationMethod import IdentificationMethod
-from abc import ABC, abstractmethod 
+from abc import abstractmethod 
 
 class User:
     def __init__(self, username, hashed_password, identification_method, identifying_document):
-        self.username = username
-        self.hashed_password = hashed_password
-        self.wallet = Wallet()
-        self.identification_method = identification_method
-        self.identifying_document = identifying_document
-        self.past_trips = []
+        self.__username = username
+        self.__hashed_password = hashed_password
+        self.__wallet = Wallet()
+        self.__identification_method = identification_method
+        self.__identifying_document = identifying_document
+        self.__past_trips = []
 
     def get_username(self):
-        return self.username
+        return self.__username
     
     def get_hashed_password(self):
-        return self.hashed_password
+        return self.__hashed_password
     
-    def update_past_trips(self,trip):
-        self.past_trips.append(trip)
+    def get_wallet(self):
+        return self.__wallet
+    
+    def get_identification_method(self):
+        return self.__identification_method
+    
+    def get_identifying_document(self):
+        return self.__identifying_document
+
+    def update_past_trips(self, trip):
+        self.__past_trips.append(trip)
 
     def get_past_trips(self):
-        return self.past_trips
+        return self.__past_trips
     
     @abstractmethod
     def pay_overdue(self):
+        pass
+
+    @abstractmethod
+    def get_overdue(self):
         pass

@@ -10,10 +10,9 @@ class HashingAlgorithm(Enum):
     Bcrypt = 3
 
 class AuthenticationSystem:
-    #add private variables
     def __init__(self, hashing_algorithm):
-        self.user_list = []
-        self.hashing_algorithm = hashing_algorithm
+        self.__user_list = []
+        self.__hashing_algorithm = hashing_algorithm
 
     def get_hash(self, data):
         match self.hashing_algorithm:
@@ -31,15 +30,16 @@ class AuthenticationSystem:
                 raise ValueError(f"Unsupported hashing algorithm: {self.hashing_algorithm}")
 
     def login_user(self, username, password):
-        for user in self.user_list:
+        for user in self.__user_list:
             if user.get_username()==username :
                 if user.get_hashed_password()==self.get_hash(password):
                     return user
         return None
 
     def register_user(self, username, password, identification_method, identifying_document):
-        for user in self.user_list:
+        for user in self.__user_list:
             if user.get_username()==username : 
                 return None 
         user = User(username,self.get_hash(username,password),identification_method,identifying_document)
-        self.user_list.append(user)
+        self.__user_list.append(user)
+        return user
