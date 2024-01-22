@@ -1,10 +1,6 @@
 from Location import Location
 from enum import Enum 
-
-class VehicleCondition(Enum):
-    ReadyToUse = 1
-    NeedRepair = 2
-    NeedReplacement = 3
+from VehicleCondition import VehicleCondition
 
 class VehicleType(Enum):
     Bike = 1
