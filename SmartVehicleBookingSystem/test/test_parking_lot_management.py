@@ -39,9 +39,9 @@ class TestParkingLotManagement(unittest.TestCase):
         self.assertIn(self.vehicle2, repair_vehicles)
         self.assertNotIn(self.vehicle1, repair_vehicles)
 
-    def test_get_vehicle_information(self):
+    def test_get_vehicle_instance(self):
         self.parking_lot.add_vehicle(self.vehicle1)
-        vehicle_info = self.parking_lot.get_vehicle_information("QR001")
+        vehicle_info = self.parking_lot.get_vehicle_instance("QR001")
         self.assertEqual(vehicle_info, self.vehicle1)
 
 if __name__ == '__main__':
