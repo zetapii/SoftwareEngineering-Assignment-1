@@ -1,5 +1,5 @@
 from Location import Location
-from enum import Enum
+from enum import Enum 
 
 class VehicleCondition(Enum):
     ReadyToUse = 1

@@ -1,9 +1,9 @@
 class Wallet:
-    def __init__(self, min_balance):
+    def __init__(self, min_balance = 0):
         self.__current_balance = 0.0
         self.__min_balance = min_balance
         self.__transaction_history = []
-
+        
     def add_funds(self, amount):
         if amount > 0:
             self.__current_balance += amount
