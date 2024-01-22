@@ -1,14 +1,21 @@
 from Location import Location
-from enum import Enum 
+from enum import Enum
 from VehicleCondition import VehicleCondition
 
+
 class VehicleType(Enum):
+    '''
+    Types of vehicles that can be used.
+    '''
     Bike = 1
     Bicycle = 2
     Moped = 3
 
+
 class SmartVehicle:
-    def __init__(self, vehicle_number, registration_number, vehicle_type, docking_location, vehicle_condition, qr_code):
+
+    def __init__(self, vehicle_number, registration_number, vehicle_type,
+                 docking_location, vehicle_condition, qr_code):
         self.__vehicle_number = vehicle_number
         self.__registration_number = registration_number
         self.__vehicle_type = vehicle_type

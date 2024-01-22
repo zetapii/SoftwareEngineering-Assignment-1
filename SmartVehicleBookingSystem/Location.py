@@ -1,4 +1,8 @@
 class Location:
+    '''
+    This class represents a location on the map.
+    '''
+
     def __init__(self, latitude, longitude):
         self.__latitude = latitude
         self.__longitude = longitude
@@ -8,4 +12,3 @@ class Location:
 
     def get_longitude(self):
         return self.__longitude
-    
